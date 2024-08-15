@@ -56,6 +56,12 @@ cur.execute(
     "CREATE table IF NOT EXISTS quests (context VARCHAR, answer VARCHAR, level VARCHAR)"
 )
 conn.commit()
+cur.execute("DELETE FROM quests where level = 3")
+conn.commit()
+cur.execute("INSERT INTO quests (context,answer,level) VALUES (?, ?, ?)" ,("♪♪ outside the hostel is the one stop solution, how do i write the full inscription? ♪♪", "dhunstationaryshop", 3))
+conn.commit()
+cur.execute("INSERT INTO quests (context,answer,level) VALUES (?, ?, ?)" ,("Whichever wing you choose to go, Four people will always show, Call them up for any little thing, but this one is specially for C wing. Go tell them 'KHATAM SCENE' in person", "", 4))
+conn.commit()
 
 conn.close()
 
@@ -78,10 +84,10 @@ def indexx():
         conn = sqlite3.connect('sql.db')
         cur = conn.cursor()
         result = cur.execute(
-        "SELECT * FROM users WHERE username = ?",
-        (session.get('username'),)).fetchone()
+        "SELECT * FROM users WHERE username = %s",
+        (session.get('username'))).fetchone()
         if not result:
-            cur.execute("INSERT INTO users(username,level) VALUES (?,0)", (session.get('username'),))
+            cur.execute("INSERT INTO users where username = %s and level = 0")
             conn.commit()
         return redirect(url_for('.play'))
 
@@ -100,7 +106,7 @@ def reg():
             cell = cell.row
             cpassword = worksheet.acell(f'I{cell}').value
             if password == cpassword:
-                session['username'] = username
+                session['user'] = username
                 return redirect(url_for('.play'))
             else:
                 return render_template('login.html',error="Incorrect Credentials")
@@ -117,33 +123,33 @@ def play():
         conn =  sqlite3.connect('sql.db')
         cur = conn.cursor()
         cur.execute(
-            "SELECT level from users WHERE username = ?", (session.get('username'),)
+            "SELECT level from users WHERE username = %s", (session.get('username'))
         )
         data = cur.fetchone()
 
         cur.execute(
-            "SELECT context, answer from quests WHERE level = ?", (data[0],)
+            "SELECT context, answer from quest WHERE level = %s", (data[0])
         )
         question = cur.fetchone()
         print(ans.lower(), question[1])
         ans.replace(" ", "")
         if ans.lower() == question[1]:
             cur.execute(
-                "SELECT level from users WHERE username = ?", (session.get('username'),)
+                "SELECT level from users WHERE username = %s", (session.get('username'))
             )
             data = cur.fetchone()
 
             cur.execute(
-                "UPDATE users SET level = ? WHERE username = ?", (int(data[0])+1, session.get('username'),)
+                "UPDATE users SET level = %s WHERE username = %s", (int(data[0])+1, session.get('username'))
             )
             conn.commit()
             cur.execute(
-                "SELECT level from users WHERE username = ?", (session.get('username'),)
+                "SELECT level from users WHERE username = %s", (session.get('username'))
             )
             data = cur.fetchone()
 
             cur.execute(
-            "SELECT context, answer from quests WHERE level = ?", (data[0],)
+            "SELECT context, answer from quest WHERE level = %s", (data[0])
         )
             question = cur.fetchone()
 
@@ -157,14 +163,14 @@ def play():
         conn =  sqlite3.connect('sql.db')
         cur = conn.cursor()
         cur.execute(
-            "SELECT level from users WHERE username = ?", (session.get('username'),)
+            "SELECT level from users WHERE username = %s", (session.get('username'))
         )
         data = cur.fetchone()
 
         if not data:
             return redirect(url_for('.indexx'))
         cur.execute(
-            "SELECT context, answer from quests WHERE level = ?", (data[0],)
+            "SELECT context, answer from quest WHERE level = %s", (data[0])
         )
         question = cur.fetchone()
 
