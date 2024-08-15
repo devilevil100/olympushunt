@@ -1,0 +1,308 @@
+html {
+  scroll-behavior: smooth !important;
+  background-color: black;
+}
+@media only screen and (max-width: 600px) {
+  .resou {
+    margin-top: 30% !important;
+    min-height: 100vh;
+    padding-bottom: 20px;
+  }
+  .xdddd{
+      padding-right: 2em !important;
+  }
+  .stbtn{
+      right: 0em !important;
+
+  }
+  .col-lg-9{
+      padding-right: 0 !important;
+
+  }
+  .container-fluid{
+      padding-right: 2.5em !important;
+  }
+  .logobtn{
+      margin-right: 12px !important;
+  }
+  .h-100 h1{
+      padding-left: 0.5em !important;
+  }
+  .guide{
+          padding: 0 1.33em !important;
+  }
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 10px 150px #111;
+  border-radius: 2px;
+}
+ @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3f0d12;
+background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+animation: gradient 5s ease infinite;
+  border-radius: 4px;
+}
+
+@font-face {
+  font-family: "San Francisco Display Semibold";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.eot?#iefix) format("embedded-opentype"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff2) format("woff2"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff) format("woff"), url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.ttf) format("truetype"), url("fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.svg#San Francisco Display Semibold") format("svg")
+}
+
+.lead-item{
+    margin-bottom: 1em!important;
+      background: #232323;
+    margin: 0 20px;
+    display: table;
+    color: white;
+    padding: 0.5em 3em;
+    font-size: 20px;
+    font-weight: 200 !important;
+    border-radius: 10px;
+
+}
+
+.left{
+
+  display:table-cell;
+  width:33.33vw;
+}
+
+.center{
+    text-align: center;
+  display:table-cell;
+  width:33.33vw;
+}
+
+.right{
+    text-align: end;
+  display:table-cell;
+  width:33.33vw;
+}
+
+body {
+  font-family:"San Francisco Display Semibold";
+
+  line-height: 1.6;
+  overflow-x: hidden;
+  color: black;
+  background-color: #1f1f1f;
+}
+.navbtn{
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 0 1.5em;
+    width: fit-content;
+    position: absolute;
+
+}
+@media only screen and (max-width: 600px) {
+  .ndbtn {
+    left: 0em;
+  }
+}
+.sidenav{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+}
+.logonav{
+    width: 100%;
+    text-align: center;
+}
+.logonav img{
+    max-width: 75%;
+}
+
+div.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999999999999999999;
+
+}
+@-webkit-keyframes fadeOut {
+    0% { opacity: 1;}
+    99% { opacity: 0.01;width: 40%; }
+    100% { opacity: 0;width: 0; height: 0;}
+}
+@keyframes fadeOut {
+    0% { opacity: 1;}
+    99% { opacity: 0.01;width: 40%; }
+    100% { opacity: 0;width: 0; height: 0;}
+}
+div.loader img{
+  width:40%;
+
+}
+div.loader p {
+  margin: 1em 0 0 0;
+  font-size: 16px;
+  color: white;
+  font-size: 28px;
+  font-family: "Montserrat";
+}
+
+div.logo1 {
+  width: 130px;
+  height: 130px;
+  box-sizing: border-box;
+  position: relative;
+  background-color: black;
+}
+div.logo1::before,
+div.logo1::after {
+  z-index: 1;
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  border: 4px solid transparent;
+  width: 0;
+  height: 0;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+div.logo1::before {
+  top: 0;
+  left: 0;
+  animation: border-before 1.5s infinite;
+  animation-direction: alternate;
+}
+div.logo1::after {
+  bottom: 0;
+  right: 0;
+  animation: border-after 1.5s infinite;
+  animation-direction: alternate;
+}
+div.logo1 > div {
+  position: absolute;
+  opacity: 0;
+}
+div.logo1 div.red2 {
+  border-left: 4px solid black;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  background-color: red;
+  animation: red 1.5s infinite;
+  animation-direction: alternate;
+}
+div.logo1 div.orange {
+  border-bottom: 4px solid black;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 0;
+  background-color: red;
+  animation: orange 1.5s infinite;
+  animation-direction: alternate;
+}
+div.logo1 div.red {
+  border-right: 4px solid black;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background-color: red;
+  animation: red 1.5s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes red {
+  0%,
+  50% {
+    width: 0;
+    opacity: 0;
+  }
+  50.01% {
+    opacity: 1;
+  }
+  65%,
+  100% {
+    opacity: 1;
+    width: 20%;
+  }
+}
+@keyframes orange {
+  0%,
+  65% {
+    height: 0;
+    opacity: 0;
+    top: 0;
+  }
+  65.01% {
+    opacity: 1;
+  }
+  80%,
+  100% {
+    opacity: 1;
+    height: 30%;
+    width: 65%;
+    height: 20%;
+    left: 19.5%;
+    top: 0;
+  }
+}
+@keyframes red2 {
+  0%,
+  75% {
+    width: 0;
+    opacity: 0;
+  }
+  75.01% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 1;
+    width: 20%;
+  }
+}
+.prakhar:after {
+  content: " .";
+  animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  40% {
+    color: red;
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  60% {
+    text-shadow: 0.25em 0 0 red, 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 red, 0.5em 0 0 red;
+  }
+}
